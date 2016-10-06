@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 
 public class LevelGenerator : MonoBehaviour {
-
+	//static levelGenerator
 	public static LevelGenerator instance;
 	//all level pieces blueprints used to copy from
 	public List<LevelPiece> levelPrefabs = new List<LevelPiece>();
@@ -11,10 +11,17 @@ public class LevelGenerator : MonoBehaviour {
 	public Transform levelStartPoint;
 	//all level pieces that are currently in the level
 	public List<LevelPiece> pieces = new List<LevelPiece>();
-
+	// piece holder for testing, should hold the next piece to instantiate after the trigger is hit
 	public LevelPiece piece;
+	//test added, moved from AddPiece. used to track the next level spawn possition
+	public Vector3 spawnPosition = Vector3.zero;
 
-	public Vector3 spawnPosition = Vector3.zero;//test added, moved from AddPiece
+	/// <summary>
+	/// Testing code to spawn coins
+	/// </summary>
+	 
+	//public CoinSpawn levelCoins = new CoinSpawn(); 
+
 
 	void Awake() {
 		instance = this;
@@ -23,11 +30,15 @@ public class LevelGenerator : MonoBehaviour {
 	void Start() {
 //		GenerateInitialPieces();
 		ResetSpawn();
+		//levelCoins.SpawnCoins ();
 	}
 
 	public void GenerateInitialPieces() {
 		for (int i=0; i<2; i++) {
 			AddPiece();
+			//makes two coins per level at random location  
+			//!!! Yay Works but need to move it to a better location
+			//CoinSpawn.CoinInstance.SpawnCoins (spawnPosition);
 		}
 	}
 
@@ -67,6 +78,7 @@ public class LevelGenerator : MonoBehaviour {
 		
 		piece.transform.position = spawnPosition;
 		pieces.Add(piece);
+		CoinSpawn.CoinInstance.SpawnCoins (spawnPosition);
 	}
 		
 	public void RemoveOldestPiece() {
