@@ -10,7 +10,7 @@ GameObject:
   - 4: {fileID: 468612}
   - 212: {fileID: 21292538}
   - 61: {fileID: 6128172}
-  m_Layer: 9
+  m_Layer: 8
   m_Name: Floor (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -27,7 +27,7 @@ GameObject:
   - 4: {fileID: 482804}
   - 212: {fileID: 21266070}
   - 61: {fileID: 6145704}
-  m_Layer: 9
+  m_Layer: 8
   m_Name: Floor (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -44,7 +44,7 @@ GameObject:
   - 4: {fileID: 433230}
   - 212: {fileID: 21207058}
   - 61: {fileID: 6131448}
-  m_Layer: 9
+  m_Layer: 8
   m_Name: Floor (13)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -61,7 +61,7 @@ GameObject:
   - 4: {fileID: 483710}
   - 212: {fileID: 21256486}
   - 61: {fileID: 6191582}
-  m_Layer: 9
+  m_Layer: 8
   m_Name: Floor (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -78,7 +78,7 @@ GameObject:
   - 4: {fileID: 407674}
   - 212: {fileID: 21273588}
   - 61: {fileID: 6179438}
-  m_Layer: 9
+  m_Layer: 8
   m_Name: Floor (8)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -95,7 +95,7 @@ GameObject:
   - 4: {fileID: 417178}
   - 212: {fileID: 21289408}
   - 61: {fileID: 6156624}
-  m_Layer: 9
+  m_Layer: 8
   m_Name: Floor (7)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -112,7 +112,7 @@ GameObject:
   - 4: {fileID: 479124}
   - 212: {fileID: 21259522}
   - 61: {fileID: 6192266}
-  m_Layer: 9
+  m_Layer: 8
   m_Name: Floor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -129,7 +129,7 @@ GameObject:
   - 4: {fileID: 464324}
   - 212: {fileID: 21270100}
   - 61: {fileID: 6152808}
-  m_Layer: 9
+  m_Layer: 8
   m_Name: Floor (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -144,7 +144,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 497812}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: ExitPoint
   m_TagString: Untagged
   m_Icon: {fileID: -3545028842045912814, guid: 0000000000000000d000000000000000, type: 0}
@@ -161,7 +161,7 @@ GameObject:
   - 4: {fileID: 486648}
   - 212: {fileID: 21297350}
   - 61: {fileID: 6104362}
-  m_Layer: 9
+  m_Layer: 8
   m_Name: Floor (14)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -176,7 +176,8 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 434174}
-  m_Layer: 0
+  - 114: {fileID: 114000011991953638}
+  m_Layer: 8
   m_Name: LevelPieceBasic
   m_TagString: Untagged
   m_Icon: {fileID: 2270504221434485236, guid: 0000000000000000d000000000000000, type: 0}
@@ -193,7 +194,7 @@ GameObject:
   - 4: {fileID: 411876}
   - 212: {fileID: 21212340}
   - 61: {fileID: 6119048}
-  m_Layer: 9
+  m_Layer: 8
   m_Name: Floor (12)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -210,7 +211,7 @@ GameObject:
   - 4: {fileID: 435892}
   - 212: {fileID: 21228260}
   - 61: {fileID: 6146326}
-  m_Layer: 9
+  m_Layer: 8
   m_Name: Floor (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -227,7 +228,7 @@ GameObject:
   - 4: {fileID: 409094}
   - 212: {fileID: 21267140}
   - 61: {fileID: 6198214}
-  m_Layer: 9
+  m_Layer: 8
   m_Name: Floor (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -244,7 +245,7 @@ GameObject:
   - 4: {fileID: 412168}
   - 212: {fileID: 21202670}
   - 61: {fileID: 6167088}
-  m_Layer: 9
+  m_Layer: 8
   m_Name: Floor (9)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -260,7 +261,8 @@ GameObject:
   m_Component:
   - 4: {fileID: 483678}
   - 61: {fileID: 6151502}
-  m_Layer: 0
+  - 114: {fileID: 114000011323884350}
+  m_Layer: 8
   m_Name: LeaveTrigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -277,7 +279,7 @@ GameObject:
   - 4: {fileID: 498454}
   - 212: {fileID: 21231470}
   - 61: {fileID: 6107518}
-  m_Layer: 9
+  m_Layer: 8
   m_Name: Floor (11)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -369,7 +371,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 141910}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -7.3780293, y: -19.6, z: 0}
+  m_LocalPosition: {x: -7.45, y: -20, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
@@ -1204,3 +1206,26 @@ Prefab:
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 141910}
   m_IsPrefabParent: 1
+--- !u!114 &114000011323884350
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 180170}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2088e0e9fd9e11c4ab1070952c8cb92f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &114000011991953638
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 141910}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48d826256e994e342aed39dab14d5d9e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  exitPoint: {fileID: 497812}

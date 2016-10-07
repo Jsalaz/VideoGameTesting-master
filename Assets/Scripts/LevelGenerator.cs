@@ -78,14 +78,13 @@ public class LevelGenerator : MonoBehaviour {
 		
 		piece.transform.position = spawnPosition;
 		pieces.Add(piece);
-		CoinSpawn.CoinInstance.SpawnCoins (spawnPosition);
+		//CoinSpawn.CoinInstance.SpawnCoins (spawnPosition);
 	}
 		
 	public void RemoveOldestPiece() {
-		
 		LevelPiece oldestPiece = pieces[0];
-		
 		pieces.Remove(oldestPiece);
 		Destroy(oldestPiece.gameObject);
+		CoinSpawn.CoinInstance.SpawnCoins (spawnPosition);
 	}
 }

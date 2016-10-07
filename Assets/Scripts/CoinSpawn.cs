@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
-//using System.Collections.Generic;
+using System.Collections.Generic;
 
 public class CoinSpawn : MonoBehaviour {
 
@@ -8,8 +8,15 @@ public class CoinSpawn : MonoBehaviour {
 	public static CoinSpawn CoinInstance;
 
 	//get gameObject to be generated... could come from an instance or a data structure
+/*	public CoinTransformer aCoin;
+	public List<CoinTransformer> coinList = new List<CoinTransformer>();
+	public List<CoinTransformer> coinPrefab = new List<CoinTransformer>();
+	public Transform refpoint;
+*/
 	public GameObject aCoin;
-//	public List<GameObject> coinList = new List<GameObject>();
+	public List<GameObject> coinList = new List<GameObject>();
+
+	public int numCoins = 3;
 
 	//the X range for the object
 	[Header ("X Spawn Range")]
@@ -18,7 +25,7 @@ public class CoinSpawn : MonoBehaviour {
 
 	//the Y range for the object
 	[Header ("Y Spawn Range")]
-	public float yMin = -2f;
+	public float yMin = -1f;
 	public float yMax = 5.0f;
 
 	//time for the object to appear if needed
@@ -34,7 +41,7 @@ public class CoinSpawn : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-	
+//		CoinInstance = this;
 	}
 	
 	// Update is called once per frame
@@ -45,18 +52,21 @@ public class CoinSpawn : MonoBehaviour {
 	}
 
 	public void SpawnCoins(Vector3 spawnPosition){
-		yMin = spawnPosition.y;
+		yMin = spawnPosition.y + 1.5f;
 		yMax = yMin + 10;
 		xMin = spawnPosition.x;
 		xMax = xMin + 18;
 
-		//defines the min and max ranges for x and y
-		Vector2 position = new Vector2(Random.Range (xMin,xMax), Random.Range(yMin, yMax));
-
-		//if the object is taken from a data structure
-//		GameObject thisCoin = coinList[Random.Range (0, coinList.Count)]; 
-
-		//creates the random object at the random 2d position
-		Instantiate (aCoin, position, transform.rotation);
+		GameObject tempCoin;
+		//for loop creates n coins per platform. 
+		//x can be defined by the programmer or by another mechanism like
+		//int x = spawnPosition % n
+		for (int i = 0; i < numCoins; i++) {
+			//defines the min and max ranges for x and y
+			Vector2 position = new Vector2 (Random.Range (xMin, xMax), Random.Range (yMin, yMax));
+			//creates the aCoin at the random 2d position 
+			tempCoin = (GameObject) Instantiate (aCoin, position, transform.rotation);
+			tempCoin.transform.parent = gameObject.transform;
+		}
 	}
 }

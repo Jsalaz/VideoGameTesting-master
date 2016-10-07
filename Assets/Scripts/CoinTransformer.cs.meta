@@ -1,11 +1,10 @@
 fileFormatVersion: 2
-guid: 8a308cd7bf8b4364d86e2abd0a724d7a
-timeCreated: 1475812475
+guid: 007753010aa8c7c4dbd95327c0b84e74
+timeCreated: 1475812986
 licenseType: Free
 MonoImporter:
   serializedVersion: 2
-  defaultReferences:
-  - aCoin: {fileID: 164458, guid: d43c6a89fbe1041a6983019f7a6ef7c1, type: 2}
+  defaultReferences: []
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

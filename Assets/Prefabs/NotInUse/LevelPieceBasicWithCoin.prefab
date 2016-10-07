@@ -1083,7 +1083,7 @@ MonoBehaviour:
   - {fileID: 4000010794953768}
   spawnpLength: 0
   spawnIndex: 0
-  Coins: {fileID: 1000014152268344, guid: d43c6a89fbe1041a6983019f7a6ef7c1, type: 2}
+  Coins: {fileID: 164458, guid: d43c6a89fbe1041a6983019f7a6ef7c1, type: 2}
 --- !u!114 &114000013380938310
 MonoBehaviour:
   m_ObjectHideFlags: 1
