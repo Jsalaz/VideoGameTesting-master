@@ -15,8 +15,9 @@ public class GameManager : MonoBehaviour {
 	public Canvas menuCanvas;
 	public Canvas inGameCanvas;
 	public Canvas gameOverCanvas;
+//	public Canvas completedLevelCanvas;
 
-	public int collectedCoins = 0;
+	public int collectedCoins;
 
 	void Awake() {
 		instance = this;
@@ -32,6 +33,7 @@ public class GameManager : MonoBehaviour {
 		PlayerController.instance.StartGame();
 		LevelGenerator.instance.ResetSpawn ();//added to test
 		SetGameState(GameState.inGame);
+		collectedCoins = 0;
 	}
 	
 	//called when player die

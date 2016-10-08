@@ -189,6 +189,7 @@ MonoBehaviour:
   jumpForce: 12
   runningSpeed: 4.1
   animator: {fileID: 1437005298}
+  doubleJump: 0
   groundLayer:
     serializedVersion: 2
     m_Bits: 256

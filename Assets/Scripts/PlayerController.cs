@@ -8,6 +8,8 @@ public class PlayerController : MonoBehaviour {
 	private Rigidbody2D rigidBody;
 	public Animator animator;
 
+	public bool doubleJump = false;
+
 	//making singleton
 	public static PlayerController instance;
 
@@ -40,18 +42,13 @@ public class PlayerController : MonoBehaviour {
 
 		if (GameManager.instance.currentGameState == GameState.inGame) {
 
-			if (Input.GetMouseButtonDown (0)) {
+			if (Input.GetMouseButtonDown (0) || Input.GetKeyDown (KeyCode.UpArrow)) {
 				Jump ();
 				//Debug.Log("jumping");
 			}
-
-			if (Input.GetKeyDown (KeyCode.UpArrow))
-				Jump ();
-
 			animator.SetBool ("isGrounded", IsGrounded ());
 		}
 	}
-
 
 	void FixedUpdate() {
 
@@ -65,8 +62,13 @@ public class PlayerController : MonoBehaviour {
 
 
 	void Jump() {
-		if (IsGrounded()) {
-			rigidBody.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+		if (IsGrounded ()) {
+			rigidBody.AddForce (Vector2.up * jumpForce, ForceMode2D.Impulse);
+			doubleJump = true;
+		} else if (doubleJump && !IsGrounded()) {
+			doubleJump = false;
+			rigidBody.velocity = new Vector2 (runningSpeed, 0);
+			rigidBody.AddForce (Vector2.up * jumpForce, ForceMode2D.Impulse);
 		}
 	}
 
@@ -98,7 +100,6 @@ public class PlayerController : MonoBehaviour {
 
 	public float GetDistance(){
 		float traveledDistance = Vector2.Distance (new Vector2 (startingPosition.x, 0), new Vector2 (this.transform.position.x, 0));
-
 		return traveledDistance;
 	}
 }
