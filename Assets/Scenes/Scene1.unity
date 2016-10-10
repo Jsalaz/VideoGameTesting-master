@@ -162,6 +162,48 @@ CanvasRenderer:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 8345410}
+--- !u!1 &121524530
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 121524532}
+  - 114: {fileID: 121524531}
+  m_Layer: 0
+  m_Name: LevelManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &121524531
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 121524530}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e2095092b0f81f74d9ccab2099d95fda, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  totalDistance: 0
+  totalCoins: 0
+--- !u!4 &121524532
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 121524530}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -13.771642, y: 3.4151237, z: -10}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
 --- !u!1 &186707385 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 186324, guid: 62359dbec881e4a0a8ba81638de6e92a, type: 2}
@@ -184,6 +226,8 @@ MonoBehaviour:
   jumpForce: 12
   runningSpeed: 0
   maxSpeed: 35
+  traveledDistance: 0
+  collectedCoins: 0
   animator: {fileID: 1437005298}
   doubleJump: 0
   groundLayer:
@@ -198,7 +242,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 435386, guid: 62359dbec881e4a0a8ba81638de6e92a, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -7.02
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 435386, guid: 62359dbec881e4a0a8ba81638de6e92a, type: 2}
       propertyPath: m_LocalPosition.y
@@ -613,7 +657,7 @@ Prefab:
     - target: {fileID: 11422180, guid: 2bd63ae78076d4adb8476d8a3fe81277, type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 732449311}
+      objectReference: {fileID: 121524531}
     - target: {fileID: 11422180, guid: 2bd63ae78076d4adb8476d8a3fe81277, type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: SceneLoader
@@ -746,7 +790,6 @@ GameObject:
   m_Component:
   - 4: {fileID: 732449310}
   - 114: {fileID: 732449309}
-  - 114: {fileID: 732449311}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -770,7 +813,6 @@ MonoBehaviour:
   inGameCanvas: {fileID: 1400182998}
   gameOverCanvas: {fileID: 727208096}
   endLevelCanvas: {fileID: 1885094695}
-  collectedCoins: 0
 --- !u!4 &732449310
 Transform:
   m_ObjectHideFlags: 0
@@ -784,17 +826,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 1
---- !u!114 &732449311
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 732449308}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e2095092b0f81f74d9ccab2099d95fda, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &845205507
 GameObject:
   m_ObjectHideFlags: 0
@@ -1335,6 +1366,8 @@ MonoBehaviour:
   coinLabel: {fileID: 536588268}
   scoreLabel: {fileID: 1112507443}
   highscoreLabel: {fileID: 478496002}
+  trueDistance: 0
+  trueCoins: 0
 --- !u!1001 &1618811349
 Prefab:
   m_ObjectHideFlags: 0
@@ -1781,7 +1814,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4000012356374744, guid: 0c6f740e3f3b94144b1f922fa6e045f6, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -7.48
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4000012356374744, guid: 0c6f740e3f3b94144b1f922fa6e045f6, type: 2}
       propertyPath: m_LocalPosition.y
@@ -1842,7 +1875,7 @@ Transform:
   m_PrefabInternal: {fileID: 1990136434}
   m_GameObject: {fileID: 2073881301}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -7.48, y: -5.01, z: 0}
+  m_LocalPosition: {x: 0, y: -5.01, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []

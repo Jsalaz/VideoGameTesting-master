@@ -3,31 +3,74 @@ using UnityEngine.SceneManagement;
 using System.Collections;
 
 public class LevelManager : MonoBehaviour {
+	public static LevelManager levelInstance;
 
-	public void getScene(){
+	public float totalDistance = 0;
+	public int totalCoins = 0;
+
+	void Awake(){
+		levelInstance = this;
+		DontDestroyOnLoad (transform.gameObject);
+	}
+
+//	void Start(){
+//		SceneManager.LoadScene ("Scene1");
+//	}
+
+	public Scene getScene(){
 		Scene currentScene = SceneManager.GetActiveScene ();
-		Debug.Log (currentScene.name);
-		Debug.Log (currentScene.buildIndex);
+		return currentScene;
+	}
+
+	public void SetTotalDistance(float distance){
+		if (getScene ().name == "Scene1" || GameState.endLevel == GameManager.instance.currentGameState) {
+			totalDistance = distance;
+		} else {
+			totalDistance += distance;
+		}
+	}
+
+	public float GetTotalDistance(){
+		if (getScene ().name == "Scene1" || GameState.endLevel == GameManager.instance.currentGameState) {
+			return PlayerController.instance.GetDistance ();
+		} else {
+			return totalDistance + PlayerController.instance.GetDistance ();
+		}
+	}
+
+	public void SetCoins(int coins){
+		if (getScene ().name == "Scene1" || GameState.endLevel == GameManager.instance.currentGameState) {
+			totalCoins = coins;
+		} else {
+			totalCoins += coins;
+		}
+	}
+
+	public int GetCoins(){
+		if (getScene ().name == "Scene1" || GameState.endLevel == GameManager.instance.currentGameState) {
+			return PlayerController.instance.GetCoins ();
+		} else {
+			return totalCoins + PlayerController.instance.GetCoins ();
+		}
+	}
+
+	public void LevelComplete(float distance, int coins){
+		//PlayerController.instance.EndLevel ();
+		SetTotalDistance (distance);
+		SetCoins(coins);
+	}
+
+	public void LvlReset(){
+		SetCoins (0);
+		SetTotalDistance (0);
+		//SceneManager.LoadScene ("Scene1");
 	}
 
 	public void SceneLoader(){
-		Scene currentScene = SceneManager.GetActiveScene ();
-		Debug.Log (currentScene.name);
-		Debug.Log (currentScene.buildIndex);
-
-		if (GameManager.instance.collectedCoins < 15) {
-			SceneManager.LoadScene ("Scene1");
-			currentScene = SceneManager.GetActiveScene ();
-			Debug.Log (currentScene.name);
-			Debug.Log (currentScene.buildIndex);
-	
-		}
-		else if (GameManager.instance.collectedCoins < 30) {
+		if (SceneManager.GetActiveScene().name == "Scene1") {
+		//	SceneManager.UnloadScene ("Scene1");
+			//totalDistance = totalDistance + PlayerController.instance.GetDistance();
 			SceneManager.LoadScene ("Scene2");
-			currentScene = SceneManager.GetActiveScene ();
-			Debug.Log (currentScene.name);
-			Debug.Log (currentScene.buildIndex);
-
 		}
 			
 	}

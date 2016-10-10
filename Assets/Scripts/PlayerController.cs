@@ -6,6 +6,11 @@ public class PlayerController : MonoBehaviour {
 	public float jumpForce = 12f;
 	public float runningSpeed;
 	public float maxSpeed = 35;
+	//added 10/10/16
+	public float traveledDistance = 0;
+	public int collectedCoins = 0;
+
+
 	private Rigidbody2D rigidBody;
 	public Animator animator;
 
@@ -16,11 +21,13 @@ public class PlayerController : MonoBehaviour {
 
 	//Starting Possition for player1
 	private Vector3 startingPosition;
+	private Vector3 previousPosition;
 
 	void Awake() {
 		instance = this;
 		rigidBody = GetComponent<Rigidbody2D>();
 		startingPosition = this.transform.position;
+//		previousPosition = this.transform.position;
 	}
 
 
@@ -28,6 +35,7 @@ public class PlayerController : MonoBehaviour {
 		animator.SetBool("isAlive", true);
 		rigidBody.constraints = RigidbodyConstraints2D.None;
 		this.transform.position = startingPosition;
+		collectedCoins = 0;
 		runningSpeed = 0.1f;
 	}
 
@@ -37,29 +45,17 @@ public class PlayerController : MonoBehaviour {
 
 	}
 
-
 	// Update is called once per frame
 	void Update () {
 		if (GameManager.instance.currentGameState == GameState.inGame) {
 
 			if (Input.GetMouseButtonDown (0) || Input.GetKeyDown (KeyCode.UpArrow)) {
 				Jump ();
-				//Debug.Log("jumping");
 			}
 			animator.SetBool ("isGrounded", IsGrounded ());
 		}
 	}
-/*
-	void FixedUpdate() {
-		if (GameManager.instance.currentGameState == GameState.inGame) {
 
-			if (rigidBody.velocity.x < runningSpeed) {
-				rigidBody.velocity = new Vector2 (runningSpeed, rigidBody.velocity.y);
-			}
-		}
-	}
-
-	*/
 	void FixedUpdate(){
 		if (GameManager.instance.currentGameState == GameState.inGame) {
 
@@ -71,8 +67,6 @@ public class PlayerController : MonoBehaviour {
 			}
 		}
 	}
-
-
 
 	void Jump() {
 		if (IsGrounded ()) {
@@ -113,10 +107,25 @@ public class PlayerController : MonoBehaviour {
 
 	public void EndLevel(){
 		rigidBody.constraints = RigidbodyConstraints2D.FreezePosition;
+		LevelManager.levelInstance.LevelComplete (GetDistance(), GetCoins());
+		GameManager.instance.SetGameState (GameState.endLevel);
 	}
 
 	public float GetDistance(){
-		float traveledDistance = Vector2.Distance (new Vector2 (startingPosition.x, 0), new Vector2 (this.transform.position.x, 0));
-		return traveledDistance;
+		//traveledDistance = Vector3.Distance (this.transform.position, startingPosition);
+		//traveledDistance = Vector2.Distance (new Vector2 (startingPosition.x, 0), new Vector2 (this.transform.position.x, 0));
+		traveledDistance = transform.position.x;// - startingPosition.x);
+		return traveledDistance;// + totalDistance;
+	}
+
+	public void CollectedCoin(){
+		collectedCoins++;
+		if (collectedCoins >= 15) {
+			EndLevel ();
+		}
+	}
+
+	public int GetCoins(){
+		return collectedCoins;
 	}
 }

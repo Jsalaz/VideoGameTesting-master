@@ -9,8 +9,10 @@ public class ViewGameOver : MonoBehaviour {
 
 	void Update(){
 		if(GameManager.instance.currentGameState == GameState.gameOver){
-			coinLabel.text = GameManager.instance.collectedCoins.ToString ();
-			scoreLabel.text = PlayerController.instance.GetDistance ().ToString ("f0");
+			coinLabel.text = LevelManager.levelInstance.GetCoins().ToString ();
+			//PlayerController.instance.collectedCoins.ToString ();
+			scoreLabel.text = LevelManager.levelInstance.GetTotalDistance().ToString ("f0");
+			//PlayerController.instance.GetDistance ().ToString ("f0");
 		}
 	}
 

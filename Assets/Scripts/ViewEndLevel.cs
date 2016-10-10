@@ -9,8 +9,9 @@ public class ViewEndLevel : MonoBehaviour {
 
 	void Update(){
 		if(GameManager.instance.currentGameState == GameState.endLevel){
-			coinLabel.text = GameManager.instance.collectedCoins.ToString ();
-			scoreLabel.text = PlayerController.instance.GetDistance ().ToString ("f0");
+			coinLabel.text = LevelManager.levelInstance.GetCoins().ToString ();
+			//scoreLabel.text = PlayerController.instance.GetDistance ().ToString ("f0");
+			scoreLabel.text = LevelManager.levelInstance.GetTotalDistance().ToString ("f0");
 		}
 	}
 }

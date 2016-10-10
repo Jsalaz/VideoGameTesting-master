@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public enum GameState {
 	menu,
@@ -18,8 +19,6 @@ public class GameManager : MonoBehaviour {
 	public Canvas gameOverCanvas;
 	public Canvas endLevelCanvas;
 
-	public int collectedCoins;
-
 	void Awake() {
 		instance = this;
 	}
@@ -27,16 +26,14 @@ public class GameManager : MonoBehaviour {
 	void Start() {
 //		StartGame ();
 		currentGameState = GameState.menu;
-
-		//added for scene change
 	}
 	
 	//called to start the game
 	public void StartGame() {
-		PlayerController.instance.StartGame();
+
+		PlayerController.instance.StartGame ();
 		LevelGenerator.instance.ResetSpawn ();//added to test
-		SetGameState(GameState.inGame);
-		collectedCoins = 0;
+		SetGameState (GameState.inGame);
 	}
 	
 	//called when player dies
@@ -47,9 +44,10 @@ public class GameManager : MonoBehaviour {
 	//called when player decide to go back to the menu
 	public void BackToMenu() {
 		SetGameState(GameState.menu);
+		LevelManager.levelInstance.LvlReset ();
 	}
 
-	void SetGameState (GameState newGameState) {
+	public void SetGameState (GameState newGameState) {
 		
 		if (newGameState == GameState.menu) {
 			//setup Unity scene for menu state
@@ -88,13 +86,4 @@ public class GameManager : MonoBehaviour {
 			StartGame();
 		}
 	}
-
-	public void CollectedCoin(){
-		collectedCoins++;
-		if (collectedCoins >= 15) {
-			PlayerController.instance.EndLevel ();
-			SetGameState (GameState.endLevel);
-		}
-	}
-
 }
