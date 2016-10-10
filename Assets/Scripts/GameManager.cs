@@ -4,6 +4,7 @@ using System.Collections;
 public enum GameState {
 	menu,
 	inGame,
+	endLevel,
 	gameOver
 }
 
@@ -15,7 +16,7 @@ public class GameManager : MonoBehaviour {
 	public Canvas menuCanvas;
 	public Canvas inGameCanvas;
 	public Canvas gameOverCanvas;
-//	public Canvas completedLevelCanvas;
+	public Canvas endLevelCanvas;
 
 	public int collectedCoins;
 
@@ -26,6 +27,8 @@ public class GameManager : MonoBehaviour {
 	void Start() {
 //		StartGame ();
 		currentGameState = GameState.menu;
+
+		//added for scene change
 	}
 	
 	//called to start the game
@@ -36,7 +39,7 @@ public class GameManager : MonoBehaviour {
 		collectedCoins = 0;
 	}
 	
-	//called when player die
+	//called when player dies
 	public void GameOver() {
 		SetGameState(GameState.gameOver);
 	}
@@ -53,20 +56,27 @@ public class GameManager : MonoBehaviour {
 			menuCanvas.enabled = true;
 			inGameCanvas.enabled = false;
 			gameOverCanvas.enabled = false;
-		}
-		else if (newGameState == GameState.inGame) {
+			endLevelCanvas.enabled = false;
+		} else if (newGameState == GameState.inGame) {
 			//setup Unity scene for inGame state
 			menuCanvas.enabled = false;
 			inGameCanvas.enabled = true;
 			gameOverCanvas.enabled = false;
-		}
-		else if (newGameState == GameState.gameOver) {
+			endLevelCanvas.enabled = false;
+		} else if (newGameState == GameState.gameOver) {
 			//setup Unity scene for gameOver state
 			menuCanvas.enabled = false;
 			inGameCanvas.enabled = false;
 			gameOverCanvas.enabled = true;
+			endLevelCanvas.enabled = false;
+		} else if (newGameState == GameState.endLevel) {
+			//set up for the end level canvas event
+			menuCanvas.enabled = false;
+			inGameCanvas.enabled = false;
+			gameOverCanvas.enabled = false;
+			endLevelCanvas.enabled = true;
 		}
-		
+
 		currentGameState = newGameState;
 	}
 
@@ -81,6 +91,10 @@ public class GameManager : MonoBehaviour {
 
 	public void CollectedCoin(){
 		collectedCoins++;
+		if (collectedCoins >= 15) {
+			PlayerController.instance.EndLevel ();
+			SetGameState (GameState.endLevel);
+		}
 	}
 
 }

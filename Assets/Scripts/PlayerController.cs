@@ -4,7 +4,8 @@ using System.Collections;
 public class PlayerController : MonoBehaviour {
 
 	public float jumpForce = 12f;
-	public float runningSpeed = 5.1f;
+	public float runningSpeed;
+	public float maxSpeed = 35;
 	private Rigidbody2D rigidBody;
 	public Animator animator;
 
@@ -27,7 +28,7 @@ public class PlayerController : MonoBehaviour {
 		animator.SetBool("isAlive", true);
 		rigidBody.constraints = RigidbodyConstraints2D.None;
 		this.transform.position = startingPosition;
-		runningSpeed = 5.0f;
+		runningSpeed = 0.1f;
 	}
 
 	void Start() {
@@ -39,7 +40,6 @@ public class PlayerController : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-
 		if (GameManager.instance.currentGameState == GameState.inGame) {
 
 			if (Input.GetMouseButtonDown (0) || Input.GetKeyDown (KeyCode.UpArrow)) {
@@ -49,9 +49,8 @@ public class PlayerController : MonoBehaviour {
 			animator.SetBool ("isGrounded", IsGrounded ());
 		}
 	}
-
+/*
 	void FixedUpdate() {
-
 		if (GameManager.instance.currentGameState == GameState.inGame) {
 
 			if (rigidBody.velocity.x < runningSpeed) {
@@ -59,6 +58,20 @@ public class PlayerController : MonoBehaviour {
 			}
 		}
 	}
+
+	*/
+	void FixedUpdate(){
+		if (GameManager.instance.currentGameState == GameState.inGame) {
+
+			if (rigidBody.velocity.x < runningSpeed) {
+				rigidBody.velocity = new Vector2 (runningSpeed, rigidBody.velocity.y);
+			}
+			if (instance.runningSpeed < instance.maxSpeed) {
+				instance.runningSpeed += Time.deltaTime / 2;
+			}
+		}
+	}
+
 
 
 	void Jump() {
@@ -96,6 +109,10 @@ public class PlayerController : MonoBehaviour {
 			//saves new highscore
 			PlayerPrefs.SetFloat("highscore", this.GetDistance());
 		}
+	}
+
+	public void EndLevel(){
+		rigidBody.constraints = RigidbodyConstraints2D.FreezePosition;
 	}
 
 	public float GetDistance(){
