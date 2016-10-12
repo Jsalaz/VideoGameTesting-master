@@ -300,6 +300,12 @@ Prefab:
     - {fileID: 114000013627742048, guid: 62359dbec881e4a0a8ba81638de6e92a, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 62359dbec881e4a0a8ba81638de6e92a, type: 2}
   m_IsPrefabParent: 0
+--- !u!114 &389505832 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 11491680, guid: 2bd63ae78076d4adb8476d8a3fe81277,
+    type: 2}
+  m_PrefabInternal: {fileID: 562457064}
+  m_Script: {fileID: 708705254, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
 --- !u!1 &478495999
 GameObject:
   m_ObjectHideFlags: 0
@@ -586,7 +592,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 22452780, guid: 2bd63ae78076d4adb8476d8a3fe81277, type: 2}
       propertyPath: m_SizeDelta.x
-      value: 96
+      value: 128
       objectReference: {fileID: 0}
     - target: {fileID: 22452780, guid: 2bd63ae78076d4adb8476d8a3fe81277, type: 2}
       propertyPath: m_SizeDelta.y
@@ -594,7 +600,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 22418452, guid: 2bd63ae78076d4adb8476d8a3fe81277, type: 2}
       propertyPath: m_SizeDelta.x
-      value: 53
+      value: 64
       objectReference: {fileID: 0}
     - target: {fileID: 22418452, guid: 2bd63ae78076d4adb8476d8a3fe81277, type: 2}
       propertyPath: m_SizeDelta.y
@@ -1449,7 +1455,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 22452780, guid: 2bd63ae78076d4adb8476d8a3fe81277, type: 2}
       propertyPath: m_SizeDelta.x
-      value: 96
+      value: 128
       objectReference: {fileID: 0}
     - target: {fileID: 22452780, guid: 2bd63ae78076d4adb8476d8a3fe81277, type: 2}
       propertyPath: m_SizeDelta.y
@@ -1710,6 +1716,12 @@ CanvasRenderer:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1700513695}
+--- !u!114 &1779776910 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 11457292, guid: 2bd63ae78076d4adb8476d8a3fe81277,
+    type: 2}
+  m_PrefabInternal: {fileID: 562457064}
+  m_Script: {fileID: 708705254, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
 --- !u!1 &1885094690 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 111022, guid: 2bd63ae78076d4adb8476d8a3fe81277, type: 2}
@@ -1730,8 +1742,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e400f6a35f262814a8b3f396261855c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  coinLabel: {fileID: 11491680, guid: 2bd63ae78076d4adb8476d8a3fe81277, type: 2}
-  scoreLabel: {fileID: 11457292, guid: 2bd63ae78076d4adb8476d8a3fe81277, type: 2}
+  coinLabel: {fileID: 389505832}
+  scoreLabel: {fileID: 1779776910}
 --- !u!223 &1885094695 stripped
 Canvas:
   m_PrefabParentObject: {fileID: 22345870, guid: 2bd63ae78076d4adb8476d8a3fe81277,

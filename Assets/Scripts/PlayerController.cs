@@ -99,13 +99,14 @@ public class PlayerController : MonoBehaviour {
 		rigidBody.constraints = RigidbodyConstraints2D.FreezePosition;
 
 		//check if highscore save if it is
-		if (PlayerPrefs.GetFloat ("highscore", 0) < this.GetDistance ()) {
+		if (PlayerPrefs.GetFloat ("highscore", 0) < LevelManager.levelInstance.GetTotalDistance ()) {
 			//saves new highscore
-			PlayerPrefs.SetFloat("highscore", this.GetDistance());
+			PlayerPrefs.SetFloat("highscore", LevelManager.levelInstance.GetTotalDistance ());
 		}
 	}
 
 	public void EndLevel(){
+		animator.SetBool ("isAlive", false);
 		rigidBody.constraints = RigidbodyConstraints2D.FreezePosition;
 		LevelManager.levelInstance.LevelComplete (GetDistance(), GetCoins());
 		GameManager.instance.SetGameState (GameState.endLevel);
@@ -113,8 +114,8 @@ public class PlayerController : MonoBehaviour {
 
 	public float GetDistance(){
 		//traveledDistance = Vector3.Distance (this.transform.position, startingPosition);
-		//traveledDistance = Vector2.Distance (new Vector2 (startingPosition.x, 0), new Vector2 (this.transform.position.x, 0));
-		traveledDistance = transform.position.x;// - startingPosition.x);
+		traveledDistance = Vector2.Distance (new Vector2 (startingPosition.x, 0), new Vector2 (this.transform.position.x, 0));
+		//traveledDistance = transform.position.x;// - startingPosition.x);
 		return traveledDistance;// + totalDistance;
 	}
 

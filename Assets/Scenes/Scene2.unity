@@ -1915,8 +1915,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e400f6a35f262814a8b3f396261855c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  coinLabel: {fileID: 11491680, guid: 2bd63ae78076d4adb8476d8a3fe81277, type: 2}
-  scoreLabel: {fileID: 11457292, guid: 2bd63ae78076d4adb8476d8a3fe81277, type: 2}
+  coinLabel: {fileID: 94401384}
+  scoreLabel: {fileID: 661795257}
 --- !u!114 &1885094693
 MonoBehaviour:
   m_ObjectHideFlags: 0
